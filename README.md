@@ -1,4 +1,3 @@
-
 # Motorcycle Delivery Management Platform - Frontend
 
 This project focuses on developing the frontend of a motorcycle-based delivery management platform.  
@@ -36,7 +35,6 @@ The backend is already completed, so the main task is to build a modern, respons
   - 3 Time Series Charts
 - Smart chatbot (Gemini API) for user assistance.
 - Strong form validations.
-- Fully responsive interface.
 
 ## 📂 Project Structure
 
