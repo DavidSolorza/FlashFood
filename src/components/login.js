@@ -1,6 +1,6 @@
 import "../styles/login.css"; // Import your CSS file here
 import React, { useState } from "react";
-import { auth, provider } from "../firebase";
+import { auth, providerGoogle, providerGithub, microsoftProvider } from "../firebase";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -8,6 +8,8 @@ import {
 } from "firebase/auth";
 import { TextField, Button, Card, Typography } from "@mui/material";
 import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+import { FaWindows } from 'react-icons/fa';
 
 
 function Login() {
@@ -40,13 +42,35 @@ function Login() {
     };
 
     const handleGoogleLogin = () => {
-        signInWithPopup(auth, provider)
+        signInWithPopup(auth, providerGoogle)
             .then((result) => {
                 alert("Google login successful!");
                 console.log(result.user);
             })
             .catch((error) => {
                 alert("Error with Google: " + error.message);
+            });
+    };
+
+    const handleGithubLogin = () => {
+        signInWithPopup(auth, providerGithub)
+            .then((result) => {
+                alert("Github login successful!");
+                console.log(result.user);
+            })
+            .catch((error) => {
+                alert("Error with Github: " + error.message);
+            });
+    };
+
+    const handleMicrosoftLogin = () => {
+        signInWithPopup(auth, microsoftProvider)
+            .then((result) => {
+                alert("Microsoft login successful!");
+                console.log(result.user);
+            })
+            .catch((error) => {
+                alert("Error with Microsoft: " + error.message);
             });
     };
 
@@ -94,6 +118,14 @@ function Login() {
 
                 <Button onClick={handleGoogleLogin} variant="outlined" color="secondary" fullWidth>
                     <FcGoogle style={{ marginRight: "8px" }} /> Login with Google
+                </Button>
+                <hr style={{ margin: "5px 0" }} />
+                <Button onClick={handleGithubLogin} variant="outlined" color="secondary" fullWidth>
+                    <FaGithub style={{ marginRight: "8px" }} /> Login with Github
+                </Button>
+                <hr style={{ margin: "5px 0" }} />
+                <Button onClick={handleMicrosoftLogin} variant="outlined" color="secondary" fullWidth>
+                    <FaWindows style={{ marginRight: "8px" }} /> Login with Microsoft
                 </Button>
             </Card>
         </div>

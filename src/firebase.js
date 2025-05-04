@@ -1,6 +1,6 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, GithubAuthProvider, OAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB1xFPIAq7VnOQcdKIzJxz86Gd82dwXtO0",
@@ -13,6 +13,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+const providerGoogle = new GoogleAuthProvider();
+const providerGithub = new GithubAuthProvider();
+const microsoftProvider = new OAuthProvider("microsoft.com");
 
-export { auth, provider };
+export { auth, providerGoogle, providerGithub, microsoftProvider };
