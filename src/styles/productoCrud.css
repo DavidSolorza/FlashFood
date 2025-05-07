@@ -401,6 +401,7 @@
   justify-content: center;
   padding: 32px 0 18px 0;
   background: #222831;
+  box-sizing: border-box;
 }
 .catalogo-barra-busqueda input {
   background: #23272f;
@@ -409,22 +410,24 @@
   font-size: 1.1rem;
   padding: 14px 18px;
   border-radius: 8px;
-  width: 90vw;
+  width: 100%;
   max-width: 420px;
   box-shadow: 0 2px 8px #0002;
   outline: none;
+  margin: 0 auto;
+  display: block;
 }
 .catalogo-lista-productos {
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 32px 0 0 0;
   width: 100vw;
   max-width: 1200px;
   margin: 0 auto;
-  overflow-x: hidden;
+  box-sizing: border-box;
 }
 .catalogo-card-producto {
   background: #23272f;
@@ -438,6 +441,7 @@
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   padding: 18px 12px 16px 12px;
+  margin: 0 auto;
 }
 .catalogo-card-producto:hover {
   transform: translateY(-4px) scale(1.04);
@@ -454,22 +458,25 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
 }
 .catalogo-info-producto h4 {
   color: #fff;
   font-size: 1.1rem;
   margin: 0;
+  text-align: center;
 }
 .catalogo-precio {
   color: #ffb84d;
   font-weight: bold;
   font-size: 1.05rem;
+  text-align: center;
 }
 .catalogo-restaurante {
   color: #bbb;
   font-size: 0.98rem;
+  text-align: center;
 }
 .catalogo-vacio {
   color: #fff;
@@ -523,6 +530,7 @@
   color: #ffb84d;
   font-size: 1.05rem;
   margin-bottom: 8px;
+  text-align: center;
 }
 .catalogo-modal-desc {
   color: #bbb;
@@ -533,6 +541,7 @@
 .catalogo-modal-extras {
   width: 100%;
   margin-bottom: 12px;
+  text-align: left;
 }
 .catalogo-modal-extras label {
   display: block;
@@ -544,6 +553,7 @@
   align-items: center;
   gap: 18px;
   margin-bottom: 18px;
+  justify-content: center;
 }
 .catalogo-modal-cantidad button {
   background: #ffb84d;
@@ -581,6 +591,7 @@
   .catalogo-lista-productos {
     gap: 14px;
     padding: 18px 0 0 0;
+    max-width: 100vw;
   }
   .catalogo-card-producto {
     width: 140px;
@@ -599,5 +610,9 @@
     width: 90px;
     height: 90px;
   }
+}
+
+html, body {
+  overflow-x: hidden !important;
 }
   

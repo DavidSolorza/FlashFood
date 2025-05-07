@@ -1,23 +1,35 @@
 /* src/styles/App.css */
 .App {
-  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  background: #181c22;
   min-height: 100vh;
   color: rgb(15, 149, 202);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 100vw;
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Contenedor para páginas */
 .page-container {
-  width: 100vw;
+  width: 100%;
   margin: 0;
   padding-bottom: 90px; /* espacio para el footer fijo */
   padding-top: 70px;    /* espacio para el navbar fijo */
   min-height: calc(100vh - 130px);
   box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 @media (max-width: 1000px) {
