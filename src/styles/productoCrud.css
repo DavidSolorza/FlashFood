@@ -391,32 +391,20 @@
   box-sizing: border-box;
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   overflow-x: hidden;
 }
+
 .catalogo-barra-busqueda {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   padding: 32px 0 18px 0;
   background: #222831;
   box-sizing: border-box;
 }
-.catalogo-barra-busqueda input {
-  background: #23272f;
-  border: none;
-  color: #fff;
-  font-size: 1.1rem;
-  padding: 14px 18px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: 0 2px 8px #0002;
-  outline: none;
-  margin: 0 auto;
-  display: block;
-}
+
 .catalogo-lista-productos {
   display: flex;
   flex-wrap: wrap;
@@ -424,17 +412,18 @@
   justify-content: center;
   align-items: center;
   padding: 32px 0 0 0;
-  width: 100vw;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
 }
+
 .catalogo-card-producto {
   background: #23272f;
   border-radius: 16px;
   box-shadow: 0 2px 12px #0003;
-  width: 240px;
-  min-height: 320px;
+  width: 260px;
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -614,5 +603,160 @@
 
 html, body {
   overflow-x: hidden !important;
+}
+
+/* Sidebar del carrito */
+.sidebar-carrito {
+  width: 370px;
+  min-width: 320px;
+  max-width: 100vw;
+  background: #23272f;
+  box-shadow: -2px 0 16px #0005;
+  border-radius: 0 0 0 18px;
+  padding: 32px 24px 24px 24px;
+  position: sticky;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: 32px;
+}
+.sidebar-carrito h3 {
+  color: #ffb84d;
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.carrito-item {
+  display: flex;
+  align-items: center;
+  background: #1e1e1e;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  padding: 10px 8px;
+  gap: 8px;
+}
+.carrito-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+.controles-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.controles-cantidad button {
+  background: #ffb84d;
+  color: #000;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.controles-cantidad button:hover {
+  background: #ffc107;
+}
+.btn-quitar {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0;
+}
+.btn-quitar:hover {
+  background: #d32f2f;
+}
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #333;
+  font-size: 1.2rem;
+  color: #fff;
+}
+.form-datos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+.input-sidebar {
+  width: 100%;
+  background: #1e1e1e;
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+.btn-finalizar {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 16px;
+}
+.btn-finalizar:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+.btn-finalizar:hover:not(:disabled) {
+  background: #45a049;
+}
+.animacion-exito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .sidebar-carrito {
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    margin-left: 0;
+    z-index: 4000;
+    height: 100vh;
+    box-shadow: 0 0 0 #0000;
+  }
+  .catalogo-lista-productos {
+    margin-right: 0;
+    max-width: 100vw;
+  }
+}
+
+@media (min-width: 900px) {
+  .catalogo-lista-productos {
+    margin-right: 370px;
+  }
+}
+
+.btn-finalizar, .btn-quitar {
+  border-radius: 8px !important;
 }
   

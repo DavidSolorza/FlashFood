@@ -2,9 +2,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './styles/App.css';
+import { ProveedorGlobal } from './contextoGlobal';
 
 import Login from './components/login';
 import ProductosCrud from './components/productos/productosCrud';
+import PedidosCrud from './components/pedidos/pedidosCrud';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 
@@ -20,6 +22,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/productos" element={<ProductosCrud />} />
+          <Route path="/pedidos" element={<PedidosCrud />} />
           {/* Agrega más rutas aquí */}
         </Routes>
       </div>
@@ -29,12 +32,12 @@ function AppContent() {
   );
 }
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <AppContent />
+      <ProveedorGlobal>
+        <AppContent />
+      </ProveedorGlobal>
     </Router>
   );
 }
-
-export default App;

@@ -1,0 +1,495 @@
+/* Estructura general */
+.catalogo-pedidos-dark {
+  width: 100vw;
+  min-height: calc(100vh - 130px);
+  background: #181c22;
+  margin: 0;
+  padding: 0 0 110px 0;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Barra de búsqueda y filtros */
+.catalogo-barra-busqueda {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 0 18px 0;
+  background: #222831;
+  box-sizing: border-box;
+}
+
+.catalogo-barra-busqueda input {
+  background: #23272f;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 14px 18px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 2px 8px #0002;
+  outline: none;
+}
+
+.filtro-estado {
+  background: #23272f;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 14px 18px;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 2px 8px #0002;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-crear {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px #0002;
+}
+
+.btn-crear:hover {
+  background: #45a049;
+}
+
+/* Lista de pedidos */
+.catalogo-lista-pedidos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 0 0 0;
+  width: 100vw;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.catalogo-card-pedido {
+  background: #23272f;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0003;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.catalogo-card-pedido:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 6px 24px #0005;
+}
+
+.catalogo-info-pedido {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.catalogo-info-pedido h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0;
+  grid-column: 1 / -1;
+}
+
+.catalogo-cliente {
+  color: #ffb84d;
+  font-size: 1.1rem;
+}
+
+.catalogo-fecha {
+  color: #bbb;
+  font-size: 1rem;
+}
+
+.catalogo-estado {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.estado-pendiente {
+  background: #ff9800;
+  color: #000;
+}
+
+.estado-en-preparación {
+  background: #2196f3;
+  color: #fff;
+}
+
+.estado-entregado {
+  background: #4caf50;
+  color: #fff;
+}
+
+.catalogo-total {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Modal */
+.catalogo-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.catalogo-modal {
+  background: #23272f;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #0008;
+  padding: 32px 24px 24px 24px;
+  max-width: 500px;
+  width: 96vw;
+  position: relative;
+  color: #fff;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-datos {
+  max-width: 800px;
+}
+
+.catalogo-modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Lista de productos */
+.lista-productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.producto-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.producto-card:hover {
+  transform: translateY(-4px);
+}
+
+.producto-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.producto-info {
+  padding: 16px;
+}
+
+.producto-info h3 {
+  margin: 0 0 8px 0;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.producto-precio {
+  color: #ffb84d;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.btn-agregar {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-agregar:hover {
+  background: #45a049;
+}
+
+/* Carrito */
+.carrito-resumen {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.carrito-resumen h3 {
+  color: #ffb84d;
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+}
+
+.controles-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.controles-cantidad button {
+  background: #ffb84d;
+  color: #000;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.controles-cantidad button:hover {
+  background: #ffc107;
+}
+
+.btn-quitar {
+  background: #f44336;
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-quitar:hover {
+  background: #d32f2f;
+}
+
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #333;
+  font-size: 1.2rem;
+}
+
+.btn-continuar {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 24px;
+}
+
+.btn-continuar:hover {
+  background: #45a049;
+}
+
+/* Formulario de datos */
+.form-datos {
+  display: grid;
+  gap: 24px;
+}
+
+.form-grupo {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.form-grupo label {
+  display: block;
+  color: #ffb84d;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.form-grupo input {
+  width: 100%;
+  background: #23272f;
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.form-grupo h3 {
+  color: #ffb84d;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+
+.direccion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.direccion-grid input:first-child {
+  grid-column: 1 / -1;
+}
+
+/* Resumen del pedido */
+.resumen-pedido {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.resumen-pedido h3 {
+  color: #ffb84d;
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #333;
+  font-size: 1.2rem;
+}
+
+/* Botones de acción */
+.botones-accion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.btn-volver {
+  background: #666;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-volver:hover {
+  background: #777;
+}
+
+.btn-finalizar {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-finalizar:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.btn-finalizar:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .catalogo-barra-busqueda {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+
+  .catalogo-barra-busqueda input,
+  .filtro-estado,
+  .btn-crear {
+    width: 100%;
+    max-width: none;
+  }
+
+  .catalogo-lista-pedidos {
+    padding: 24px 16px;
+  }
+
+  .catalogo-info-pedido {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .catalogo-total {
+    text-align: left;
+  }
+
+  .lista-productos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .direccion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .botones-accion {
+    grid-template-columns: 1fr;
+  }
+} 
