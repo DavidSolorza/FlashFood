@@ -5,8 +5,8 @@ import './styles/App.css';
 import { ProveedorGlobal } from './contextoGlobal';
 
 import Login from './components/login';
-import ProductosCrud from './components/productos/productosCrud';
-import PedidosCrud from './components/pedidos/pedidosCrud';
+import ProductosCrud from './pages/productos/productosCrud';
+import PedidosCrud from './pages/pedidos/pedidosCrud';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 
