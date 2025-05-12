@@ -10,6 +10,7 @@ import PedidosCrud from './pages/pedidos/pedidosCrud';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import ListRestaurants from './pages/Restaurant/List';
+import CreateRestaurant from './pages/Restaurant/create';
 
 
 function AppContent() {
@@ -26,6 +27,8 @@ function AppContent() {
           <Route path="/productos" element={<ProductosCrud />} />
           <Route path="/pedidos" element={<PedidosCrud />} />
           <Route path="/restaurants" element={<ListRestaurants/>} />
+          <Route path="/restaurants/create" element={<CreateRestaurant/>} />
+
 
           {/* Agrega más rutas aquí */}
         </Routes>

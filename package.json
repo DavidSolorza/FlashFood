@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^11.6.1",
     "flash-food": "file:",
+    "formik": "^2.4.6",
     "lucide-react": "^0.509.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -20,7 +21,8 @@
     "react-router-dom": "^7.5.3",
     "react-scripts": "5.0.1",
     "sweetalert2": "^11.21.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.6.1"
   },
   "scripts": {
     "start": "react-scripts start",

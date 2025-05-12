@@ -71,3 +71,11 @@ export const deleteRestaurant = async (id) => {
         return false;
     }
 };
+
+export const restaurantService = {
+  createRestaurant,
+  deleteRestaurant,
+  getRestaurantById,
+  getRestaurants,
+  updateRestaurant,
+};
