@@ -1,17 +1,20 @@
-import { Edit, Eye, Trash2 } from "lucide-react";
+import { Edit, Eye, Trash2, CopyPlus } from "lucide-react";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { deleteRestaurant, getRestaurants } from "../../services/restaurantService";
+import { restaurantService } from "../../services/restaurantService";
+import RestaurantsFormValidator from '../../components/Restaurants/RestaurantsFormValidator'
 
 const ListRestaurants = () => {
   const [data, setData] = useState([]);
+  const [editingRestaurant, setEditingRestaurant] = useState(null);
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const restaurants = await getRestaurants();
+    const restaurants = await restaurantService.getRestaurants();
     setData(restaurants);
   };
 
@@ -19,8 +22,48 @@ const ListRestaurants = () => {
     console.log(`Ver registro con ID: ${id}`);
   };
 
-  const handleEdit = (id) => {
-    console.log(`Editar registro con ID: ${id}`);
+
+  const handleCreateNew = () => {
+    setShowCreateModal(true);
+  };
+
+  const handleCreate = async (newRestaurant) => {
+    try {
+      const created = await restaurantService.createRestaurant(newRestaurant);
+      if (created) {
+        Swal.fire("¡Creado!", "Restaurante agregado correctamente", "success");
+        setShowCreateModal(false);
+        fetchData();
+      }
+    } catch (error) {
+      Swal.fire("Error", error.message || "Error al crear restaurante", "error");
+    }
+  };
+
+  const handleEdit = (restaurant) => {
+    Swal.fire({
+      title: "¿Editar restaurante?",
+      text: "¿Estás seguro de querer editar este registro?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Sí, editar",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setEditingRestaurant(restaurant);
+      }
+    });
+  };
+
+  const handleUpdate = async (updatedData) => {
+    try {
+      await restaurantService.updateRestaurant(editingRestaurant.id, updatedData);
+      Swal.fire("¡Actualizado!", "Restaurante actualizado correctamente", "success");
+      setEditingRestaurant(null);
+      fetchData();
+    } catch (error) {
+      Swal.fire("Error", error.message || "Error al actualizar", "error");
+    }
   };
 
   const handleDelete = async (id) => {
@@ -32,11 +75,11 @@ const ListRestaurants = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminar",
+      confirmButtonText: "Eliminar",
       cancelButtonText: "No"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const success = await deleteRestaurant(id);
+        const success = await restaurantService.deleteRestaurant(id);
         if (success) {
           Swal.fire({
             title: "Eliminado",
@@ -88,7 +131,7 @@ const ListRestaurants = () => {
                           <Eye size={20} />
                         </button>
                         <button
-                          onClick={() => item.id !== undefined && handleEdit(item.id)}
+                          onClick={() => item.id !== undefined && handleEdit(item)}
                           className="text-yellow-600 dark:text-yellow-500"
                         >
                           <Edit size={20} />
@@ -108,7 +151,45 @@ const ListRestaurants = () => {
           </div>
         </div>
       </div>
+    <button
+      onClick={() => handleCreateNew()}
+      className="text-blue-600 dark:text-blue-500"
+    >
+      <CopyPlus  size={40} />
+                        </button>
+      {/* Modal de edición - Debe estar fuera de la tabla pero dentro del return principal */}
+    {editingRestaurant && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-lg shadow-xl w-full max-w-md">
+          <div className="p-6">
+            <h3 className="text-lg font-bold mb-4">Editar Restaurante</h3>
+            <RestaurantsFormValidator
+              mode={2}
+              handleUpdate={handleUpdate}
+              restaurant={editingRestaurant}
+              onClose={() => setEditingRestaurant(null)}
+            />
+          </div>
+        </div>
+      </div>
+    )}
+    {showCreateModal && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-lg shadow-xl w-full max-w-md">
+          <div className="p-6">
+            <h3 className="text-lg font-bold mb-4">Agregar Restaurante</h3>
+            <RestaurantsFormValidator
+              mode={1}
+              handleCreate={handleCreate}            
+              onClose={() => setShowCreateModal(false)}
+            />
+          </div>
+        </div>
+      </div>
+    )}
+    
     </div>
+    
   );
 };
 

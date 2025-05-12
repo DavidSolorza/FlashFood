@@ -1,4 +1,4 @@
-import { Restaurant } from "../models/restaurant";
+// import { Restaurant } from "../models/restaurant";
 
 const API_URL = `http://127.0.0.1:5000/restaurants`;
 
@@ -31,10 +31,18 @@ export const getRestaurantById = async (id) => {
 // Crear un nuevo restaurante
 export const createRestaurant = async (restaurant) => {
     try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(restaurant),
+        const response = await fetch(`${API_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: restaurant.name,
+        address: restaurant.address,
+        phone: restaurant.phone,
+        email: restaurant.email
+      })
         });
         if (!response.ok) throw new Error("Error al crear restaurante");
         return await response.json();

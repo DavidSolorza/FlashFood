@@ -29,7 +29,7 @@ function AppContent() {
           <Route path="/pedidos" element={<PedidosCrud />} />
           <Route path="/restaurants" element={<ListRestaurants/>} />
           <Route path="/restaurants/create" element={<CreateRestaurant/>} />
-          <Route path="/restaurants/update/:id" element={<UpdateRestaurantPage/>} />
+          {/* <Route path="/restaurants/update/:id" element={<UpdateRestaurantPage/>} /> */}
           {/* Agrega más rutas aquí */}
         </Routes>
       </div>
