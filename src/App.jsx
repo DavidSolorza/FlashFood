@@ -1,47 +1,23 @@
 // src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import './styles/App.css';
-import { ProveedorGlobal } from './contextoGlobal';
-
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Login from './components/login';
-import ProductosCrud from './pages/productos/productosCrud';
 import PedidosCrud from './pages/pedidos/pedidosCrud';
-import Navbar from './components/navbar';
-import Footer from './components/footer';
-import ListRestaurants from './pages/Restaurant/List';
+import ProductosCrud from './pages/productos/productosCrud';
+import './styles/App.css';
 
-
-function AppContent() {
-  const location = useLocation();
-  const isLoginPage = location.pathname === '/';
-
+function App() {
   return (
-    <div className="App">
-      {!isLoginPage && <Navbar />}
-
-      <div className="page-container">
+    <Router>
+      <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/productos" element={<ProductosCrud />} />
           <Route path="/pedidos" element={<PedidosCrud />} />
-          <Route path="/restaurants" element={<ListRestaurants/>} />
-
-          {/* Agrega más rutas aquí */}
         </Routes>
       </div>
-
-      {!isLoginPage && <Footer />}
-    </div>
-  );
-}
-
-export default function App() {
-  return (
-    <Router>
-      <ProveedorGlobal>
-        <AppContent />
-      </ProveedorGlobal>
     </Router>
   );
 }
+
+export default App;
