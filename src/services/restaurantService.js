@@ -1,10 +1,10 @@
 import { Restaurant } from "../models/restaurant";
 
-const API_URL = import.meta.env.API_RESTAURANT+"/restaurants"||""; // Reemplaza con la URL real
+const API_URL = import.meta.env.API_RESTAURANT + "/restaurants" || "";
 
 // Obtener todos los restaurantes
-export const getRestaurants = async (): Promise<Restaurant[]> => {
-    console.log("aqui "+API_URL)
+export const getRestaurants = async () => {
+    console.log("aqui " + API_URL);
     try {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error("Error al obtener restaurantes");
@@ -16,7 +16,7 @@ export const getRestaurants = async (): Promise<Restaurant[]> => {
 };
 
 // Obtener un restaurante por ID
-export const getRestaurantById = async (id: number): Promise<Restaurant | null> => {
+export const getRestaurantById = async (id) => {
     try {
         const response = await fetch(`${API_URL}/${id}`);
         if (!response.ok) throw new Error("restaurante no encontrado");
@@ -28,7 +28,7 @@ export const getRestaurantById = async (id: number): Promise<Restaurant | null> 
 };
 
 // Crear un nuevo restaurante
-export const createRestaurant = async (restaurant: Omit<Restaurant, "id">): Promise<Restaurant | null> => {
+export const createRestaurant = async (restaurant) => {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
@@ -44,7 +44,7 @@ export const createRestaurant = async (restaurant: Omit<Restaurant, "id">): Prom
 };
 
 // Actualizar restaurante
-export const updateRestaurant = async (id: number, restaurant: Partial<Restaurant>): Promise<Restaurant | null> => {
+export const updateRestaurant = async (id, restaurant) => {
     try {
         const response = await fetch(`${API_URL}/${id}`, {
             method: "PUT",
@@ -60,7 +60,7 @@ export const updateRestaurant = async (id: number, restaurant: Partial<Restauran
 };
 
 // Eliminar restaurante
-export const deleteRestaurant = async (id: number): Promise<boolean> => {
+export const deleteRestaurant = async (id) => {
     try {
         const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
         if (!response.ok) throw new Error("Error al eliminar restaurante");

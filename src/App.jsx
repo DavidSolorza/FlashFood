@@ -9,6 +9,8 @@ import ProductosCrud from './components/productos/productosCrud';
 import PedidosCrud from './components/pedidos/pedidosCrud';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import ListRestaurants from './pages/Restaurant/List';
+
 
 function AppContent() {
   const location = useLocation();
@@ -23,6 +25,8 @@ function AppContent() {
           <Route path="/" element={<Login />} />
           <Route path="/productos" element={<ProductosCrud />} />
           <Route path="/pedidos" element={<PedidosCrud />} />
+          <Route path="/restaurants" element={<ListRestaurants/>} />
+
           {/* Agrega más rutas aquí */}
         </Routes>
       </div>
