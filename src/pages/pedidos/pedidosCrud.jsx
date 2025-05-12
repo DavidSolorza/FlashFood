@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createOrder, deleteOrder, getOrders, updateOrder } from '../../services/orderService';
 import '../../styles/pedidosCrud.css';
 import ListaPedidos from './ListaPedidos';
 import ModalCrearPedido from './ModalCrearPedido';
@@ -75,6 +76,18 @@ export default function PedidosCrud() {
       codigoPostal: ''
     }
   });
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const data = await getOrders();
+        setPedidos(data);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+    fetchOrders();
+  }, []);
 
   const pedidosFiltrados = pedidos.filter(p => {
     const coincideBusqueda = 
@@ -199,6 +212,33 @@ export default function PedidosCrud() {
         codigoPostal: ''
       }
     });
+  };
+
+  const handleCreateOrder = async (orderData) => {
+    try {
+      const newOrder = await createOrder(orderData);
+      setPedidos([...pedidos, newOrder]);
+    } catch (error) {
+      console.error('Error creating order:', error);
+    }
+  };
+
+  const handleUpdateOrder = async (id, orderData) => {
+    try {
+      const updatedOrder = await updateOrder(id, orderData);
+      setPedidos(pedidos.map(order => (order.id === id ? updatedOrder : order)));
+    } catch (error) {
+      console.error('Error updating order:', error);
+    }
+  };
+
+  const handleDeleteOrder = async (id) => {
+    try {
+      await deleteOrder(id);
+      setPedidos(pedidos.filter(order => order.id !== id));
+    } catch (error) {
+      console.error('Error deleting order:', error);
+    }
   };
 
   return (

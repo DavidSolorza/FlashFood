@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useGlobal } from '../../contextoGlobal';
+import { createProduct, deleteProduct, getProducts, updateProduct } from '../../services/productService';
 import '../../styles/productoCrud.css';
 import Carrito from './Carrito';
 import CatalogoProductos from './CatalogoProductos';
@@ -10,7 +10,7 @@ import ModalDireccion from './ModalDireccion';
 const API_URL = 'http://127.0.0.1:5000';
 
 export default function ProductosCrud() {
-  const [productos, setProductos] = useState([]);
+  const [products, setProducts] = useState([]);
   const [extrasSeleccionados, setExtrasSeleccionados] = useState({});
   const [direccionSeleccionada, setDireccionSeleccionada] = useState('');
   const [nuevaDireccion, setNuevaDireccion] = useState({
@@ -34,16 +34,15 @@ export default function ProductosCrud() {
   } = useGlobal();
 
   useEffect(() => {
-    const obtenerProductos = async () => {
+    const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${API_URL}/products`);
-        setProductos(response.data);
+        const data = await getProducts();
+        setProducts(data);
       } catch (error) {
-        console.error('Error al obtener productos:', error);
+        console.error('Error fetching products:', error);
       }
     };
-
-    obtenerProductos();
+    fetchProducts();
   }, []);
 
   useEffect(() => {
@@ -57,7 +56,7 @@ export default function ProductosCrud() {
     localStorage.setItem('sidebarAbierto', JSON.stringify(sidebarAbierto));
   }, [sidebarAbierto]);
 
-  const productosFiltrados = productos.filter(
+  const productosFiltrados = products.filter(
     p =>
       (busquedaGlobal === '' ||
         p.nombre.toLowerCase().includes(busquedaGlobal.toLowerCase()) ||
@@ -154,6 +153,33 @@ export default function ProductosCrud() {
     setDireccionSeleccionada(nueva.id);
     setNuevaDireccion({ ciudad: '', calle: '', barrio: '' });
     setModalDireccion(false);
+  };
+
+  const handleCreateProduct = async (productData) => {
+    try {
+      const newProduct = await createProduct(productData);
+      setProducts([...products, newProduct]);
+    } catch (error) {
+      console.error('Error creating product:', error);
+    }
+  };
+
+  const handleUpdateProduct = async (id, productData) => {
+    try {
+      const updatedProduct = await updateProduct(id, productData);
+      setProducts(products.map(product => (product.id === id ? updatedProduct : product)));
+    } catch (error) {
+      console.error('Error updating product:', error);
+    }
+  };
+
+  const handleDeleteProduct = async (id) => {
+    try {
+      await deleteProduct(id);
+      setProducts(products.filter(product => product.id !== id));
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
   };
 
   const isMobile = window.innerWidth < 900;

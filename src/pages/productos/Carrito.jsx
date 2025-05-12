@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import { formatearPrecio } from './utils';
 
-export default function Carrito({ carrito, actualizarCantidad, quitarDelCarrito, totalCarrito, nombreCliente, setNombreCliente, telefonoCliente, setTelefonoCliente, direccionSeleccionada, setDireccionSeleccionada, direcciones, setModalDireccion, handleConfirmarPedido, animacion, setSidebarAbierto }) {
+export default function Carrito({ carrito, actualizarCantidad, quitarDelCarrito, totalCarrito, nombreCliente, setNombreCliente, telefonoCliente, setTelefonoCliente, direccionSeleccionada, setDireccionSeleccionada, direcciones, setModalDireccion, animacion, setSidebarAbierto }) {
   const [mostrarCarrito, setMostrarCarrito] = useState(false);
+
+  const handleConfirmarPedido = () => {
+    const nuevoPedido = {
+      id: Date.now(),
+      numero: `Pedido ${Date.now()}`,
+      cliente: nombreCliente,
+      fecha: new Date().toLocaleDateString(),
+      estado: 'Confirmado',
+      total: totalCarrito
+    };
+    console.log('Pedido confirmado:', nuevoPedido);
+    setNombreCliente('');
+    setTelefonoCliente('');
+    setDireccionSeleccionada('');
+  };
 
   return (
     <>

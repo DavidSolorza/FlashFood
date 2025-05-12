@@ -48,12 +48,6 @@ export default function CatalogoProductos({ productosFiltrados, setModalDetalles
             <span className="catalogo-restaurante" style={{ color: '#bfc9d1', fontSize: 14, marginBottom: 8 }}>{producto.restaurante}</span>
             <div style={{ flex: 1 }} />
             <div style={{ display: 'flex', width: '100%', gap: 8, marginTop: 10 }}>
-              <button className="btn-detalles" style={{ flex: 1, background: '#232323', color: '#ffb84d', border: '1.5px solid #ffb84d', borderRadius: 8, fontWeight: 700, fontSize: 14, padding: '8px 0', cursor: 'pointer', transition: 'all 0.18s' }}
-                onMouseOver={e => { e.currentTarget.style.background = '#ffb84d'; e.currentTarget.style.color = '#232323'; }}
-                onMouseOut={e => { e.currentTarget.style.background = '#232323'; e.currentTarget.style.color = '#ffb84d'; }}
-                onClick={() => { setModalDetalles({ abierto: true, producto }); }}>
-                Detalles
-              </button>
               <button className="btn-agregar" style={{ flex: 1, fontWeight: 700, fontSize: 14, borderRadius: 8, padding: '8px 0', transition: 'all 0.18s' }}
                 onMouseOver={e => { e.currentTarget.style.background = '#1ecb4f'; }}
                 onMouseOut={e => { e.currentTarget.style.background = ''; }}
