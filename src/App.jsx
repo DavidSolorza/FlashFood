@@ -11,6 +11,7 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 import ListRestaurants from './pages/Restaurant/List';
 import CreateRestaurant from './pages/Restaurant/create';
+import UpdateRestaurantPage from './pages/Restaurant/update';
 
 
 function AppContent() {
@@ -28,8 +29,7 @@ function AppContent() {
           <Route path="/pedidos" element={<PedidosCrud />} />
           <Route path="/restaurants" element={<ListRestaurants/>} />
           <Route path="/restaurants/create" element={<CreateRestaurant/>} />
-
-
+          <Route path="/restaurants/update/:id" element={<UpdateRestaurantPage/>} />
           {/* Agrega más rutas aquí */}
         </Routes>
       </div>
