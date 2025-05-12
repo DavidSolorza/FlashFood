@@ -1,4 +1,4 @@
-export function createRestaurant({ id, name, address, phone, email }) {
+export function Restaurant({ id, name, address, phone, email }) {
     return {
         id: id || null,
         name: name || "",

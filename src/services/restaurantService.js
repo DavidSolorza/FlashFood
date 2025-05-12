@@ -1,6 +1,7 @@
 import { Restaurant } from "../models/restaurant";
 
-const API_URL = import.meta.env.API_RESTAURANT + "/restaurants" || "";
+const API_URL = `http://127.0.0.1:5000/restaurants`;
+
 
 // Obtener todos los restaurantes
 export const getRestaurants = async () => {
