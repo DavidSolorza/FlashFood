@@ -1,16 +1,21 @@
 import '../src/styles/App.css';
-import Login from './components/login';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Login from './pages/LoginPage';
+import CustomersPage from './pages/CustomersPage';
+import { CustomerProvider } from './context/CustomerContext'; // ⬅️ IMPORTA EL PROVIDER
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <div>
-          <Login />
-        </div>
-
-      </header>
+      <CustomerProvider> {/* ⬅️ ENVUELVE TODO */}
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/clientes" element={<CustomersPage />} />
+            <Route path="/" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </Router>
+      </CustomerProvider>
     </div>
   );
 }
