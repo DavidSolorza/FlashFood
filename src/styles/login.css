@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to top, #15304b 0%, #2986cc 60%, #b3e0ff 100%); /* Degradado azul oscuro abajo a azul claro arriba */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff; /* Texto blanco para contraste */
+}
+
+.page-title {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+}
+
+.login-card {
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    background: rgba(21, 48, 75, 0.92); /* Azul oscuro translúcido */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    text-align: center;
+    color: #fff; /* Texto claro para contraste */
+}
+
+.login-card h5 {
+    margin-bottom: 20px;
+    color: #2c3e50; /* Azul oscuro */
+    font-weight: bold;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-card button {
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 25px; /* Botones redondeados */
+    padding: 10px 20px;
+    background: #4ca1af; /* Azul claro */
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.login-card button:hover {
+    background: #2c3e50; /* Azul oscuro al pasar el mouse */
+}
+
+.login-card .google-button {
+    border: 1px solid #4ca1af;
+    color: #4ca1af;
+    transition: all 0.3s ease;
+}
+
+.login-card .google-button:hover {
+    background: #4ca1af;
+    color: #fff;
+}
+
+.login-card hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.login-card .toggle-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-card .toggle-text button {
+    color: #4ca1af;
+    font-weight: bold;
+    text-transform: none;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
